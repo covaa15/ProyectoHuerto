@@ -151,7 +151,7 @@ else:
     st.write("No hay datos disponibles para la fecha seleccionada.")
 
 # Selectores de año y mes para gráficas
-st.markdown('<div class="subheader">Generar Gráficas Mensuales</div>', unsafe_allow_html=True)
+st.markdown('<div class="subheader">Generar Gráficas de X días</div>', unsafe_allow_html=True)
 años_disponibles = df['Fecha'].dt.year.unique()
 año_seleccionado = st.selectbox("Selecciona un año (Gráficas)", años_disponibles, key="year_plots")
 
