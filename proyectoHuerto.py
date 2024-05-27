@@ -8,9 +8,6 @@ from sklearn.metrics import accuracy_score, precision_score, f1_score
 import requests
 from collections import defaultdict
 from dateutil import parser
-import tkinter as tk
-from tkinter import ttk, messagebox
-
 
 # Cargar el modelo y los datos
 modelo = joblib.load('mejor_modelo_dia_noche.pkl')
@@ -188,6 +185,12 @@ st.markdown(
         font-size:  1.4rem;
         color: #FFFFFF;
     }
+    .custom-select select {
+        border: 2px solid black !important;
+    }
+    .streamlit-expanderHeader {
+        background-color: #FFFFFF !important; /* Cambia el color a naranja, puedes ajustarlo según tus preferencias */
+
     </style>
     """,
     unsafe_allow_html=True
@@ -195,15 +198,6 @@ st.markdown(
 
 # Título de la aplicación
 st.markdown('<h1 class="centered-title">Huerto Inteligente 4.0</h1>', unsafe_allow_html=True)
-
-st.markdown("""
-    <style>
-    .custom-expander .streamlit-expanderHeader {
-        border: 2px solid black; /* Cambia el grosor y color del borde aquí */
-	    color: white !important;
-    }
-    </style>
-    """, unsafe_allow_html=True)
 
 
 with st.expander("Normas de Uso del Programa"):
@@ -253,6 +247,7 @@ with col1:
 
 with col2:
     st.markdown('<div class="subheader">Seleccionar Fecha</div>', unsafe_allow_html=True)
+    
     fecha_seleccionada = st.date_input("Selecciona una fecha", value=datetime.now(), min_value=datetime(2024, 3, 28), max_value=datetime.now())
 
     st.markdown('<div class="metric-container">', unsafe_allow_html=True)
