@@ -8,6 +8,9 @@ from sklearn.metrics import accuracy_score, precision_score, f1_score
 import requests
 from collections import defaultdict
 from dateutil import parser
+import tkinter as tk
+from tkinter import ttk, messagebox
+
 
 # Cargar el modelo y los datos
 modelo = joblib.load('mejor_modelo_dia_noche.pkl')
@@ -170,20 +173,20 @@ st.markdown(
     }
     .subheader {
         color: white;
-        font-size: 1.5rem;
+        font-size: 1.6rem;
         margin-top: 20px;
         margin-bottom: 10px;
     }
     .dataframe-container, .metric-container, .summary-container {
         background-color: rgba(255, 255, 255, 0.9);
         border-radius: 10px;
-        border: 2px solid #D3D3D3;
+        border: 2px solid #000000;
         padding: 10px;
         margin-bottom: 20px;
     }
     .metric {
-        font-size: 1.2rem;
-        color: #333333;
+        font-size:  1.4rem;
+        color: #FFFFFF;
     }
     </style>
     """,
@@ -193,7 +196,32 @@ st.markdown(
 # Título de la aplicación
 st.markdown('<h1 class="centered-title">Huerto Inteligente 4.0</h1>', unsafe_allow_html=True)
 
+st.markdown("""
+    <style>
+    .custom-expander .streamlit-expanderHeader {
+        border: 2px solid black; /* Cambia el grosor y color del borde aquí */
+	    color: white !important;
+    }
+    </style>
+    """, unsafe_allow_html=True)
 
+
+with st.expander("Normas de Uso del Programa"):
+    st.markdown("""
+    <div style='color: #FFFFFF;'>
+    1. <strong>Actualización de Datos:</strong>
+        - El botón de 'Actualizar' carga los datos desde la última actualización hasta el momento actual. Este proceso tarda aproximadamente un minuto. Es recomendable usar esta función para obtener los datos más recientes.
+    
+    2. <strong>Selección de Año y Mes:</strong>
+        - En la columna izquierda, selecciona un año y un mes. A continuación, la tabla cargará los datos predichos por el modelo para todos los días disponibles en ese año y mes.
+    
+    3. <strong>Gráficas Diarias:</strong>
+        - En la columna derecha, selecciona una fecha específica. Para esa fecha, se generarán tres tipos de gráficas: temperatura del suelo, humedad del suelo y conductibilidad.
+    
+    4. <strong>Generación de Gráficas Mensuales:</strong>
+        - Para crear gráficas mensuales, primero selecciona un año y un mes. Se cargarán todos los días disponibles para esa selección. Luego, elige los días específicos para los cuales deseas generar las gráficas y pulsa el botón 'Generar Gráficas'.
+    </div>
+    """, unsafe_allow_html=True)
 
 # Esto es para actualizar el dataframe que consulta los datos.
 # Tardará unos minutos pero luego muestra los datos completamente actualizados.
