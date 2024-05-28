@@ -220,6 +220,29 @@ with st.expander("Normas de Uso del Programa"):
 # Esto es para actualizar el dataframe que consulta los datos.
 # Tardará unos minutos pero luego muestra los datos completamente actualizados.
 st.markdown('<div class="subheader">Actualizar datos</div>', unsafe_allow_html=True)
+
+st.markdown("""
+    <style>
+    .stButton>button {
+        background-color: #000000; /* Color de fondo verde */
+        color: white; /* Color del texto blanco */
+        border: none; /* Sin borde */
+        padding: 15px 32px; /* Espaciado interno */
+        text-align: center; /* Alinear el texto al centro */
+        text-decoration: none; /* Sin subrayado */
+        display: inline-block; /* Mostrar en línea */
+        font-size: 16px; /* Tamaño de la fuente */
+        margin: 4px 2px; /* Márgenes */
+        cursor: pointer; /* Cursor tipo puntero */
+        border-radius: 12px; /* Bordes redondeados */
+    }
+    .stButton>button:hover {
+         color: white;
+        background-color: #aaa; /* Color de fondo cuando el cursor está sobre el botón */
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
 if st.button("Actualizar datos"):
     df = cargar_datos()
     # Esto además guarda la última obtención de datos para tener siempre una "copia de seguridad" actualizada.
